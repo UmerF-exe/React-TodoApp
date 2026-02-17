@@ -1,15 +1,17 @@
-/* App.css */
 @import '~antd/dist/reset.css';
 
-/* Custom animations */
-.ant-list-item {
-  animation: slideIn 0.3s ease;
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Animations */
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -17,24 +19,49 @@
   }
 }
 
-/* Smooth transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Task item animations */
+.ant-card {
+  animation: slideIn 0.3s ease;
+}
+
+/* Button hover effects */
 .ant-btn {
-  transition: all 0.3s ease !important;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
 }
 
-.ant-input {
-  transition: all 0.3s ease !important;
+.ant-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover effects */
-.ant-list-item:hover {
-  transform: translateX(5px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+/* Input focus effects */
+.ant-input:focus, 
+.ant-input-focused,
+.ant-select-focused .ant-select-selector,
+.ant-picker-focused {
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2) !important;
+  border-color: #667eea !important;
+}
+
+/* Card hover effect */
+.ant-card-hoverable:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -45,8 +72,498 @@
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ant-card-body {
+    padding: 16px !important;
+  }
+  
+  .ant-statistic {
+    text-align: center;
+  }
+  
+  .ant-space-compact {
+    flex-wrap: wrap;
+  }
+  
+  .ant-space-compact .ant-btn,
+  .ant-space-compact .ant-input {
+    border-radius: 8px !important;
+    margin: 4px 0 !important;
+  }
+}
+
+/* Add these responsive styles to your existing App.css */
+
+/* Mobile first approach */
+@media screen and (max-width: 550px) {
+  /* Adjust font sizes */
+  .ant-typography {
+    font-size: 14px !important;
+  }
+  
+  h1.ant-typography {
+    font-size: 24px !important;
+  }
+  
+  h2.ant-typography {
+    font-size: 20px !important;
+  }
+  
+  h3.ant-typography {
+    font-size: 18px !important;
+  }
+  
+  /* Make cards full width */
+  .ant-card {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  /* Adjust padding */
+  .ant-card-body {
+    padding: 12px !important;
+  }
+  
+  /* Stack buttons vertically */
+  .ant-space-compact {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  .ant-space-compact .ant-btn,
+  .ant-space-compact .ant-input {
+    border-radius: 8px !important;
+    margin: 4px 0 !important;
+    width: 100% !important;
+  }
+  
+  /* Make tags wrap properly */
+  .ant-tag {
+    margin: 2px !important;
+    font-size: 11px !important;
+    padding: 2px 6px !important;
+  }
+  
+  /* Adjust statistics cards */
+  .ant-statistic {
+    text-align: center !important;
+  }
+  
+  .ant-statistic-title {
+    font-size: 12px !important;
+  }
+  
+  .ant-statistic-content {
+    font-size: 18px !important;
+  }
+  
+  /* Make filters full width */
+  .ant-select,
+  .ant-picker,
+  .ant-input {
+    width: 100% !important;
+  }
+  
+  /* Adjust progress bars */
+  .ant-progress {
+    margin: 8px 0 !important;
+  }
+  
+  /* Make modals fit screen */
+  .ant-modal {
+    max-width: 90vw !important;
+    margin: 10px auto !important;
+  }
+  
+  .ant-modal-content {
+    padding: 15px !important;
+  }
+  
+  /* Adjust drawer for mobile */
+  .ant-drawer-content-wrapper {
+    width: 100% !important;
+  }
+  
+  /* Make lists more touch-friendly */
+  .ant-list-item {
+    padding: 12px !important;
+  }
+  
+  /* Increase touch targets */
+  .ant-btn {
+    min-height: 40px !important;
+    touch-action: manipulation !important;
+  }
+  
+  .ant-checkbox-wrapper {
+    min-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  /* Adjust space between elements */
+  .ant-space {
+    gap: 8px !important;
+  }
+  
+  .ant-space-vertical {
+    gap: 8px !important;
+  }
+  
+  /* Make input fields comfortable */
+  .ant-input,
+  .ant-select-selector,
+  .ant-picker {
+    min-height: 40px !important;
+  }
+  
+  /* Adjust dropdowns for mobile */
+  .ant-dropdown {
+    max-width: 90vw !important;
+  }
+  
+  .ant-dropdown-menu {
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+  }
+  
+  /* Make back to top button accessible */
+  .ant-back-top {
+    bottom: 20px !important;
+    right: 20px !important;
+  }
+  
+  .ant-back-top button {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  /* Adjust notifications */
+  .ant-notification {
+    max-width: 90vw !important;
+    left: 5vw !important;
+  }
+  
+  /* Make collapsible panels touch-friendly */
+  .ant-collapse-header {
+    padding: 12px !important;
+  }
+  
+  /* Adjust sliders and switches */
+  .ant-switch {
+    min-width: 44px !important;
+  }
+  
+  /* Improve scrolling */
+  .ant-list {
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  /* Hide some elements on very small screens */
+  .hide-on-mobile {
+    display: none !important;
+  }
+  
+  /* Show mobile-only elements */
+  .show-on-mobile {
+    display: block !important;
+  }
+  
+  /* Adjust task item for mobile */
+  .task-item {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  .task-actions {
+    margin-top: 8px !important;
+    justify-content: space-around !important;
+  }
+  
+  /* Make date picker more mobile-friendly */
+  .ant-picker-panel-container {
+    width: 100vw !important;
+    max-width: 100% !important;
+  }
+  
+  .ant-picker-panel {
+    width: 100% !important;
+  }
+}
+
+/* Tablet adjustments (550px - 768px) */
+@media screen and (min-width: 551px) and (max-width: 768px) {
+  /* Adjust grid for tablets */
+  .ant-col {
+    padding: 8px !important;
+  }
+  
+  /* Adjust font sizes */
+  .ant-typography {
+    font-size: 15px !important;
+  }
+  
+  h1.ant-typography {
+    font-size: 28px !important;
+  }
+  
+  /* Make cards slightly smaller */
+  .ant-card-body {
+    padding: 16px !important;
+  }
+  
+  /* Adjust statistics */
+  .ant-statistic-content {
+    font-size: 20px !important;
+  }
+  
+  /* Better button sizing for touch */
+  .ant-btn {
+    min-height: 36px !important;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media screen and (max-width: 900px) and (orientation: landscape) {
+  .ant-layout-content {
+    padding: 10px !important;
+  }
+  
+  .ant-card {
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* High-resolution screens */
+@media screen and (min-width: 1200px) {
+  .ant-layout-content {
+    max-width: 1400px !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .ant-btn,
+  .ant-select,
+  .ant-picker,
+  .ant-switch,
+  .ant-back-top,
+  .ant-drawer,
+  .ant-modal {
+    display: none !important;
+  }
+  
+  .ant-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    break-inside: avoid !important;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support for mobile */
+@media (prefers-color-scheme: dark) {
+  .auto-dark-mode .ant-card {
+    background: #1f1f1f !important;
+    color: #fff !important;
+  }
+}
+
+/* Fix for notched phones */
+@supports (padding: max(0px)) {
+  .ant-layout-content {
+    padding-left: max(20px, env(safe-area-inset-left)) !important;
+    padding-right: max(20px, env(safe-area-inset-right)) !important;
+    padding-bottom: max(20px, env(safe-area-inset-bottom)) !important;
+  }
+}
+
+/* Voice button pulse animation */
+@keyframes voicePulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 77, 79, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(255, 77, 79, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 77, 79, 0);
+  }
+}
+
+.voice-listening {
+  animation: voicePulse 1.5s infinite;
+}
+
+/* Mobile voice modal */
+.voice-modal .ant-modal-content {
+  border-radius: 20px;
+}
+
+.voice-modal .ant-modal-body {
+  padding: 24px;
+}
+
+/* Floating voice button */
+.floating-voice-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 1000;
+  animation: voicePulse 2s infinite;
+}
+
+.floating-voice-btn .ant-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Make sure voice button is visible on mobile */
+@media screen and (max-width: 550px) {
+  .voice-input-button {
+    width: 100% !important;
+    margin-bottom: 16px !important;
+    display: block !important;
+  }
+}
+
+/* Calendar Styles */
+.calendar-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-container.dark {
+  background: #1f1f1f;
+}
+
+.events {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.events .ant-badge-status {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.notes-month {
+  text-align: center;
+  font-size: 28px;
+}
+
+.notes-month section {
+  font-size: 28px;
+}
+
+/* Reminder Styles */
+.reminder-item {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.reminder-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reminder-time {
+  font-size: 12px;
+  color: #999;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.reminder-badge {
+  position: relative;
+}
+
+.reminder-badge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background: #ff4d4f;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+/* Animation for reminders */
+@keyframes reminderPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.reminder-active {
+  animation: reminderPulse 2s infinite;
+}
+
+/* Mobile responsive for calendar */
+@media screen and (max-width: 550px) {
+  .ant-picker-calendar {
+    font-size: 12px;
+  }
+  
+  .ant-picker-cell-inner {
+    padding: 2px !important;
+  }
+  
+  .ant-badge-status-text {
+    display: none;
+  }
+  
+  .ant-picker-calendar-date-content {
+    height: 40px !important;
+  }
+}
+
+/* Print styles for calendar */
+@media print {
+  .ant-picker-calendar {
+    max-width: 100%;
+  }
 }
